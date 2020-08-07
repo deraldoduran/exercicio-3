@@ -35,3 +35,41 @@ CREATE TABLE alunos(
 
 );
 
+CREATE TABLE IF NOT EXISTS matricula(
+	curso int,
+	aluno int,
+	
+	CONSTRAINT matricula_pkey PRIMARY KEY (curso, aluno),
+	
+	CONSTRAINT curso_fkey FOREIGN KEY (curso) REFERENCES cursos(numcurso),
+	
+	CONSTRAINT aluno_fkey FOREIGN KEY (aluno) REFERENCES alunos(numaluno)
+
+
+);
+
+CREATE TABLE aula(
+	semestre int,
+	nota int,
+	aluno int,
+	professor int,
+	
+	CONSTRAINT aula_pkey PRIMARY KEY (semestre,nota),
+	
+	CONSTRAINT aluno_fkey FOREIGN KEY (aluno) REFERENCES alunos(numaluno),
+	CONSTRAINT professor_fkey FOREIGN KEY (professor) REFERENCES professores (numprof)
+
+);
+
+CREATE TABLE aula(
+	semestre int,
+	nota int,
+	aluno int,
+	professor int,
+	
+	CONSTRAINT aula_pkey PRIMARY KEY (semestre,nota),
+	
+	CONSTRAINT aluno_fkey FOREIGN KEY (aluno) REFERENCES alunos(numaluno),
+	CONSTRAINT professor_fkey FOREIGN KEY (professor) REFERENCES professores (numprof)
+
+);
