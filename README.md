@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS disciplinas(
 	numdisp serial not null,
 	nome varchar(90),
-	areapesquisa varchar(30),
+	quantcredito int,
 	CONSTRAINT disciplinas_pkey PRIMARY KEY (numdisp)
 );
 
