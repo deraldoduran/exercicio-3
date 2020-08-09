@@ -73,3 +73,5 @@ CREATE TABLE aula(
 	CONSTRAINT professor_fkey FOREIGN KEY (professor) REFERENCES professores (numprof)
 
 );
+
+INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica');
