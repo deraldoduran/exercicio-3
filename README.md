@@ -61,16 +61,16 @@ CREATE TABLE aula(
 
 );
 
-CREATE TABLE aula(
-	semestre int,
-	nota int,
-	aluno int,
-	professor int,
+CREATE TABLE contem(
+	id SERIAL NOT NULL,
+	idcurso int,
+	iddisciplinas int,
 	
-	CONSTRAINT aula_pkey PRIMARY KEY (semestre,nota),
 	
-	CONSTRAINT aluno_fkey FOREIGN KEY (aluno) REFERENCES alunos(numaluno),
-	CONSTRAINT professor_fkey FOREIGN KEY (professor) REFERENCES professores (numprof)
+	CONSTRAINT contem_pkey PRIMARY KEY (id),
+	
+	CONSTRAINT curso_fkey FOREIGN KEY (idcurso) REFERENCES cursos(numcurso),
+	CONSTRAINT disciplina_fkey FOREIGN KEY (iddisciplinas) REFERENCES disciplinas(numdisp)
 
 );
 
