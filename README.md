@@ -76,18 +76,18 @@ CREATE TABLE contem(
 );
 
 --respondido 5
-create view questao1r(curso,numcurso, disciplina,numdisciplina)
+create view questao5_CERTA(curso,numcurso, disciplina)
 AS
-SELECT C.nome, C.numcurso, D.nome, D.numdisp, T.idcurso, T.iddisciplinas FROM cursos C, disciplinas D, contem T
+SELECT DISTINCT C.nome, C.numcurso, D.nome FROM cursos C, disciplinas D, contem T
 WHERE C.numcurso = 1
-ORDER BY T.idcurso;
+ORDER BY c.NOME ;
 
 --respondida 6
-create view questao6(curso,numcurso, disciplina,numdisciplina)
+create view questao6_CERTA(curso, disciplina)
 AS
-SELECT C.nome, C.numcurso, D.nome, D.numdisp, T.idcurso, T.iddisciplinas FROM cursos C, disciplinas D, contem T
+SELECT DISTINCT C.nome, D.nome FROM cursos C, disciplinas D, contem T
 WHERE D.numdisp = 1
-ORDER BY T.idcurso;
+ORDER BY D.nome;
 
 CREATE VIEW visao_professor_aluno (numaluno, numprofessor)
 AS
@@ -140,9 +140,12 @@ $log$ LANGUAGE plpgsql;
   FOR EACH ROW EXECUTE PROCEDURE  alimenta_aula();
 
 INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica');
+INSERT INTO cursos(totalcreditos, nome) VALUES (60, 'História');
 
 INSERT INTO alunos(nome, endereço, cidade, telefone) VALUES ('Marcos João Casanova ', 'Rua da torre', 'Cascais', '9519-6262'), ('Ailton Castro','Rua da Amargura', 'Timbucutu', '9999-6666'), ('Edvaldo Carlos Silva', ' av. Joana Angélica', 'Salvador', '2345-4496'),
 ('Juvenal', 'av. da abolição', 'Redenção', '4444-2222');
+
+insert into disciplinas (nome, quantcredito) values('História Antiga', 30), ('História das artes', 4);
 
 INSERT INTO professores(nome, areapesquisa) VALUES (' Ramon Travanti', 'calculo numerico'), (' Marcos Salvador','teoria geral da administraçao'), ('Juk', ' Banco de Dados'),
 (' Ramon Travanti', ' Engenharia de Software'), ('  Abgair ', 'calculo numerico');
