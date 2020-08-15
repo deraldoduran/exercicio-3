@@ -53,6 +53,7 @@ CREATE TABLE aula(
 	nota int,
 	aluno int,
 	professor int,
+	disciplina int REFERENCES disciplinas(numdisp),
 	
 	CONSTRAINT aula_pkey PRIMARY KEY (semestre,nota),
 	
@@ -73,6 +74,70 @@ CREATE TABLE contem(
 	CONSTRAINT disciplina_fkey FOREIGN KEY (iddisciplinas) REFERENCES disciplinas(numdisp)
 
 );
+
+--respondido 5
+create view questao1r(curso,numcurso, disciplina,numdisciplina)
+AS
+SELECT C.nome, C.numcurso, D.nome, D.numdisp, T.idcurso, T.iddisciplinas FROM cursos C, disciplinas D, contem T
+WHERE C.numcurso = 1
+ORDER BY T.idcurso;
+
+--respondida 6
+create view questao6(curso,numcurso, disciplina,numdisciplina)
+AS
+SELECT C.nome, C.numcurso, D.nome, D.numdisp, T.idcurso, T.iddisciplinas FROM cursos C, disciplinas D, contem T
+WHERE D.numdisp = 1
+ORDER BY T.idcurso;
+
+CREATE VIEW visao_professor_aluno (numaluno, numprofessor)
+AS
+SELECT A.numaluno, P.numprofessor FROM alunos A, professores P
+WHERE A.numaluno = P.professor
+ORDER BY A.numaluno;
+
+CREATE VIEW visao_professor_aluno_nomes (numaluno, numprofessor, aluno, professor)
+AS
+SELECT A.numaluno,A.nome, P.numprof,P.nome  FROM alunos A, professores P
+WHERE A.numaluno = P.numprof
+ORDER BY A.numaluno;
+
+CREATE OR REPLACE FUNCTION alimenta_aula() RETURNS
+TRIGGER AS $log$
+BEGIN
+  
+  IF (TG_OP = 'UPDATE') THEN
+  INSERT INTO aula SELECT NEW.semestre, NEW.nota, NEW.aluno, NEW.professor;
+  RETURN NEW;
+   ELSIF (TG_OP = 'INSERT') THEN
+  INSERT INTO aula SELECT NEW.semestre, NEW.nota, NEW.aluno, NEW.professor;
+  RETURN NEW;
+  END IF;
+  RETURN NULL;
+END;
+$log$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION alimenta_aula() RETURNS
+TRIGGER AS $log$
+BEGIN
+  
+  IF (TG_OP = 'UPDATE') THEN
+  INSERT INTO aula SELECT NEW.(SELECT numaluno FROM alunos), NEW.(SELECT numprofessor FROM professores);
+  RETURN NEW;
+   ELSIF (TG_OP = 'INSERT') THEN
+  INSERT INTO aula SELECT NEW.(SELECT numaluno FROM alunos), NEW.(SELECT numprofessor FROM professores);
+  RETURN NEW;
+  END IF;
+  RETURN NULL;
+END;
+$log$ LANGUAGE plpgsql;
+
+ CREATE TRIGGER alimenta_aula BEFORE
+  INSERT OR UPDATE ON  alunos 
+  FOR EACH ROW EXECUTE PROCEDURE  alimenta_aula();
+  
+   CREATE TRIGGER alimenta_aula1 BEFORE
+  INSERT OR UPDATE ON  professores
+  FOR EACH ROW EXECUTE PROCEDURE  alimenta_aula();
 
 INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica');
 
