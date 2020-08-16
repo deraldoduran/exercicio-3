@@ -75,6 +75,16 @@ CREATE TABLE contem(
 
 );
 
+INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica'); 
+INSERT INTO cursos(totalcreditos, nome) VALUES (60, 'História');
+
+INSERT INTO alunos(nome, endereço, cidade, telefone) VALUES ('Marcos João Casanova ', 'Rua da torre', 'Cascais', '9519-6262'), ('Ailton Castro','Rua da Amargura', 'Timbucutu', '9999-6666'), ('Edvaldo Carlos Silva', ' av. Joana Angélica', 'Salvador', '2345-4496'), ('Juvenal', 'av. da abolição', 'Redenção', '4444-2222');
+
+INSERT INTO disciplinas (nome, quantcredito) values('calculo numerico',6),('banco de dados', 4),('Engenharia da computação',4),('teoria geral da administraçao',4),('História Antiga', 4), ('História das artes', 4);
+
+INSERT INTO professores(nome, areapesquisa) VALUES (' Ramon Travanti', 'calculo numerico'), (' Marcos Salvador','teoria geral da administraçao'), ('Juk', ' Banco de Dados'), (' Ramon Travanti', ' Engenharia de Software'), (' Abgair ', 'calculo numerico');
+
+
 --respondido 5
 create view questao5_CERTA(curso,numcurso, disciplina)
 AS
@@ -101,52 +111,5 @@ SELECT A.numaluno,A.nome, P.numprof,P.nome  FROM alunos A, professores P
 WHERE A.numaluno = P.numprof
 ORDER BY A.numaluno;
 
-CREATE OR REPLACE FUNCTION alimenta_aula() RETURNS
-TRIGGER AS $log$
-BEGIN
-  
-  IF (TG_OP = 'UPDATE') THEN
-  INSERT INTO aula SELECT NEW.semestre, NEW.nota, NEW.aluno, NEW.professor;
-  RETURN NEW;
-   ELSIF (TG_OP = 'INSERT') THEN
-  INSERT INTO aula SELECT NEW.semestre, NEW.nota, NEW.aluno, NEW.professor;
-  RETURN NEW;
-  END IF;
-  RETURN NULL;
-END;
-$log$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION alimenta_aula() RETURNS
-TRIGGER AS $log$
-BEGIN
-  
-  IF (TG_OP = 'UPDATE') THEN
-  INSERT INTO aula SELECT NEW.(SELECT numaluno FROM alunos), NEW.(SELECT numprofessor FROM professores);
-  RETURN NEW;
-   ELSIF (TG_OP = 'INSERT') THEN
-  INSERT INTO aula SELECT NEW.(SELECT numaluno FROM alunos), NEW.(SELECT numprofessor FROM professores);
-  RETURN NEW;
-  END IF;
-  RETURN NULL;
-END;
-$log$ LANGUAGE plpgsql;
-
- CREATE TRIGGER alimenta_aula BEFORE
-  INSERT OR UPDATE ON  alunos 
-  FOR EACH ROW EXECUTE PROCEDURE  alimenta_aula();
-  
-   CREATE TRIGGER alimenta_aula1 BEFORE
-  INSERT OR UPDATE ON  professores
-  FOR EACH ROW EXECUTE PROCEDURE  alimenta_aula();
-
-INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica');
-INSERT INTO cursos(totalcreditos, nome) VALUES (60, 'História');
-
-INSERT INTO alunos(nome, endereço, cidade, telefone) VALUES ('Marcos João Casanova ', 'Rua da torre', 'Cascais', '9519-6262'), ('Ailton Castro','Rua da Amargura', 'Timbucutu', '9999-6666'), ('Edvaldo Carlos Silva', ' av. Joana Angélica', 'Salvador', '2345-4496'),
-('Juvenal', 'av. da abolição', 'Redenção', '4444-2222');
-
-insert into disciplinas (nome, quantcredito) values('História Antiga', 30), ('História das artes', 4);
-
-INSERT INTO professores(nome, areapesquisa) VALUES (' Ramon Travanti', 'calculo numerico'), (' Marcos Salvador','teoria geral da administraçao'), ('Juk', ' Banco de Dados'),
-(' Ramon Travanti', ' Engenharia de Software'), ('  Abgair ', 'calculo numerico');
 
