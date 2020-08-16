@@ -86,6 +86,8 @@ INSERT INTO professores(nome, areapesquisa) VALUES (' Ramon Travanti', 'calculo 
 
 INSERT INTO CONTEM(idcurso, iddisciplinas) VALUES (1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(4,5),(4,6);
 
+INSERT INTO matricula (curso, aluno) VALUES (1,1),(2,3),(3,2),(4,4);
+
 --respondido 5
 CREATE VIEW RESP05(curso, cod_curso,disciplina)
 AS
