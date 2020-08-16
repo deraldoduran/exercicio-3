@@ -88,6 +88,12 @@ INSERT INTO CONTEM(idcurso, iddisciplinas) VALUES (1,1),(1,2),(1,3),(2,1),(2,2),
 
 INSERT INTO matricula (curso, aluno) VALUES (1,1),(2,3),(3,2),(4,4);
 
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES (19981, 8, 1, 1, 1), (19981, 5, 2, 1, 1),(19981, 7, 3, 1, 1);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 9, 2, 1, 5),(19982, 7, 4, 1, 5);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 6, 2, 5, 1),(19982, 10, 4, 5, 1); 
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19981, 4, 1, 3, 2),(19981, 10, 2, 3, 2),(19981,3,3,3,2);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 1, 1, 4, 3),(19982, 8, 2, 4, 3),(19982, 3, 4, 3, 3) ;
+
 --respondido 5
 CREATE VIEW RESP05(curso, cod_curso,disciplina)
 AS
