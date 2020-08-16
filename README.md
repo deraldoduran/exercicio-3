@@ -84,32 +84,22 @@ INSERT INTO disciplinas (nome, quantcredito) values('calculo numerico',6),('banc
 
 INSERT INTO professores(nome, areapesquisa) VALUES (' Ramon Travanti', 'calculo numerico'), (' Marcos Salvador','teoria geral da administraçao'), ('Juk', ' Banco de Dados'), (' Ramon Travanti', ' Engenharia de Software'), (' Abgair ', 'calculo numerico');
 
+INSERT INTO CONTEM(idcurso, iddisciplinas) VALUES (1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(4,5),(4,6);
 
 --respondido 5
-create view questao5_CERTA(curso,numcurso, disciplina)
+CREATE VIEW RESP05(curso, cod_curso,disciplina)
 AS
 SELECT DISTINCT C.nome, C.numcurso, D.nome FROM cursos C, disciplinas D, contem T
-WHERE C.numcurso = 1
-ORDER BY c.NOME ;
+WHERE C.numcurso = 1 AND T.iddisciplinas = D.numdisp and T.idcurso=1
+ORDER BY C.NOME ;
 
 --respondida 6
-create view questao6_CERTA(curso, disciplina)
+CREATE VIEW RESP06 (curso,disciplina)
 AS
 SELECT DISTINCT C.nome, D.nome FROM cursos C, disciplinas D, contem T
-WHERE D.numdisp = 1
-ORDER BY D.nome;
+WHERE D.numdisp = 1 AND T.iddisciplinas = 1 AND C.numcurso = T.idcurso
+ORDER BY C.nome;
 
-CREATE VIEW visao_professor_aluno (numaluno, numprofessor)
-AS
-SELECT A.numaluno, P.numprofessor FROM alunos A, professores P
-WHERE A.numaluno = P.professor
-ORDER BY A.numaluno;
-
-CREATE VIEW visao_professor_aluno_nomes (numaluno, numprofessor, aluno, professor)
-AS
-SELECT A.numaluno,A.nome, P.numprof,P.nome  FROM alunos A, professores P
-WHERE A.numaluno = P.numprof
-ORDER BY A.numaluno;
 
 
 
