@@ -108,6 +108,12 @@ SELECT DISTINCT C.nome, D.nome FROM cursos C, disciplinas D, contem T
 WHERE D.numdisp = 1 AND T.iddisciplinas = 1 AND C.numcurso = T.idcurso
 ORDER BY C.nome;
 
+--respondida 7
+CREATE VIEW RESP07c(nome_aluno, codigo_aluno, semestre, nota, codigo_disciplina, nome_disciplina )
+AS
+SELECT DISTINCT A.nome, T.aluno, T.semestre, T.nota,T.disciplina, D.NOME FROM alunos A, aula T, disciplinas D
+WHERE T.aluno = 1 AND T.semestre = 19981 AND A.numaluno = T.aluno AND T.DISCIPLINA = D.NUMDISP
+ORDER BY D.NOME;
 
 
 
