@@ -163,3 +163,10 @@ SELECT DISTINCT P.nome,  T.semestre, T.disciplina, D.NOME FROM professores P, au
 WHERE T.disciplina = 2 AND P.numprof = T.professor AND T.DISCIPLINA = D.NUMDISP
 ORDER BY D.NOME;
 ```
+```sql
+--respondida12
+CREATE VIEW RESP12(NOTA_MINIMA, NOTA_MAXIMA, nota_media)
+AS
+SELECT  MIN(T.nota), MAX(T.NOTA), AVG(T.nota) FROM aula T, disciplinas D
+WHERE T.disciplina = 1 AND D.numdisp = T.disciplina AND T.semestre = 19981;
+```
