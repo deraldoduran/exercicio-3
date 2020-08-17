@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS disciplinas(
 	CONSTRAINT disciplinas_pkey PRIMARY KEY (numdisp)
 );
 ```
-
+```sql
 CREATE TABLE IF NOT EXISTS cursos(
 	numcurso serial not null,
 	totalcreditos int,
@@ -115,6 +115,6 @@ AS
 SELECT DISTINCT A.nome, T.aluno, T.semestre, T.nota,T.disciplina, D.NOME FROM alunos A, aula T, disciplinas D
 WHERE T.aluno = 1 AND T.semestre = 19981 AND A.numaluno = T.aluno AND T.DISCIPLINA = D.NUMDISP
 ORDER BY D.NOME;
-
+```
 
 
