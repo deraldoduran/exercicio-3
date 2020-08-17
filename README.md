@@ -1,11 +1,12 @@
 # exercicio-3
-
+```aql
 CREATE TABLE IF NOT EXISTS disciplinas(
 	numdisp serial not null,
 	nome varchar(90),
 	quantcredito int,
 	CONSTRAINT disciplinas_pkey PRIMARY KEY (numdisp)
 );
+```
 
 CREATE TABLE IF NOT EXISTS cursos(
 	numcurso serial not null,
