@@ -171,8 +171,14 @@ SELECT  MIN(T.nota), MAX(T.NOTA), AVG(T.nota) FROM aula T, disciplinas D
 WHERE T.disciplina = 1 AND D.numdisp = T.disciplina AND T.semestre = 19981;
 ```
 ```SQL
--- em resolução 13
+-- respondida 13
+CREATE VIEW nome_nota AS
 SELECT  A.nome AS nome_aluno, T.nota AS NOTAS FROM DISCIPLINAS D,aula T, alunos A
 WHERE T.disciplina = 2 AND D.numdisp = T.disciplina AND T.semestre = 19981 AND T.ALUNO = A.numaluno 
 GROUP BY A.nome, T.nota;
+
+CREATE VIEW RESP13
+AS
+SELECT * FROM NOME_NOTA
+WHERE notas IN (SELECT MAX(notas) FROM nome_nota);
 ```
