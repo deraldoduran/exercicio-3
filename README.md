@@ -147,3 +147,11 @@ SELECT DISTINCT A.nome, T.aluno, T.semestre, T.nota,T.disciplina, D.NOME FROM al
 WHERE T.disciplina = 1 AND T.nota<7 AND T.semestre = 19981 AND A.numaluno = T.aluno AND T.DISCIPLINA = D.NUMDISP
 ORDER BY D.NOME;
 ```
+```sql
+--respondida 10
+CREATE VIEW RESP10 (nome_professor, semestre, código_disciplia, nome_disciplina)
+AS
+SELECT DISTINCT P.nome,  T.semestre, T.disciplina, D.NOME FROM professores P, aula T, disciplinas D
+WHERE T.professor = 1  AND P.numprof = T.professor AND T.DISCIPLINA = D.NUMDISP AND T.disciplina = 1
+ORDER BY D.NOME;
+```
