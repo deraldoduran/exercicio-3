@@ -131,5 +131,12 @@ SELECT DISTINCT A.nome, T.aluno, T.semestre, T.nota,T.disciplina, D.NOME FROM al
 WHERE T.aluno = 1 AND T.semestre = 19981 AND A.numaluno = T.aluno AND T.DISCIPLINA = D.NUMDISP
 ORDER BY D.NOME;
 ```
-
+```sql
+--respondida 8
+CREATE VIEW RESP08 (nome_aluno, código_aluno, Semestre, nota, disciplina_código, nome_disciplina )
+AS
+SELECT DISTINCT A.nome, T.aluno, T.semestre, T.nota,T.disciplina, D.NOME FROM alunos A, aula T, disciplinas D
+WHERE T.aluno = 2 AND T.nota<7 AND A.numaluno = T.aluno AND T.DISCIPLINA = D.NUMDISP
+ORDER BY D.NOME;
+```
 
