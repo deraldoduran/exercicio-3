@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS cursos(
 	CONSTRAINT cursos_pkey PRIMARY KEY (numcurso)
 
 );
-
+```
+```sql
 CREATE TABLE IF NOT EXISTS professores(
 	numprof serial not null,
 	nome varchar(90),
@@ -24,7 +25,8 @@ CREATE TABLE IF NOT EXISTS professores(
 	
 	CONSTRAINT professores_pkey PRIMARY KEY (numprof)
 );
-
+```
+```sql
 CREATE TABLE alunos(
 	numaluno serial not null,
 	nome varchar(90),
@@ -35,7 +37,8 @@ CREATE TABLE alunos(
 	CONSTRAINT alunos_pkey PRIMARY KEY (NUMALUNO)
 
 );
-
+```
+```sql
 CREATE TABLE IF NOT EXISTS matricula(
 	curso int,
 	aluno int,
@@ -48,7 +51,8 @@ CREATE TABLE IF NOT EXISTS matricula(
 
 
 );
-
+```
+```sql
 CREATE TABLE aula(
 	semestre int,
 	nota int,
@@ -62,7 +66,8 @@ CREATE TABLE aula(
 	CONSTRAINT professor_fkey FOREIGN KEY (professor) REFERENCES professores (numprof)
 
 );
-
+```
+```sql
 CREATE TABLE contem(
 	id SERIAL NOT NULL,
 	idcurso int,
@@ -75,40 +80,50 @@ CREATE TABLE contem(
 	CONSTRAINT disciplina_fkey FOREIGN KEY (iddisciplinas) REFERENCES disciplinas(numdisp)
 
 );
-
+```
+```sql
 INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica'); 
 INSERT INTO cursos(totalcreditos, nome) VALUES (60, 'História');
-
+```
+```sql
 INSERT INTO alunos(nome, endereço, cidade, telefone) VALUES ('Marcos João Casanova ', 'Rua da torre', 'Cascais', '9519-6262'), ('Ailton Castro','Rua da Amargura', 'Timbucutu', '9999-6666'), ('Edvaldo Carlos Silva', ' av. Joana Angélica', 'Salvador', '2345-4496'), ('Juvenal', 'av. da abolição', 'Redenção', '4444-2222');
-
+```
+```sql
 INSERT INTO disciplinas (nome, quantcredito) values('calculo numerico',6),('banco de dados', 4),('Engenharia da computação',4),('teoria geral da administraçao',4),('História Antiga', 4), ('História das artes', 4);
-
+```
+```sql
 INSERT INTO professores(nome, areapesquisa) VALUES (' Ramon Travanti', 'calculo numerico'), (' Marcos Salvador','teoria geral da administraçao'), ('Juk', ' Banco de Dados'), (' Ramon Travanti', ' Engenharia de Software'), (' Abgair ', 'calculo numerico');
-
+```
+```sql
 INSERT INTO CONTEM(idcurso, iddisciplinas) VALUES (1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(4,5),(4,6);
-
+```
+```sql
 INSERT INTO matricula (curso, aluno) VALUES (1,1),(2,3),(3,2),(4,4);
-
+```
+```sql
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES (19981, 8, 1, 1, 1), (19981, 5, 2, 1, 1),(19981, 7, 3, 1, 1);
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 9, 2, 1, 5),(19982, 7, 4, 1, 5);
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 6, 2, 5, 1),(19982, 10, 4, 5, 1); 
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19981, 4, 1, 3, 2),(19981, 10, 2, 3, 2),(19981,3,3,3,2);
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 1, 1, 4, 3),(19982, 8, 2, 4, 3),(19982, 3, 4, 3, 3) ;
-
+```
+```sql
 --respondido 5
 CREATE VIEW RESP05(curso, cod_curso,disciplina)
 AS
 SELECT DISTINCT C.nome, C.numcurso, D.nome FROM cursos C, disciplinas D, contem T
 WHERE C.numcurso = 1 AND T.iddisciplinas = D.numdisp and T.idcurso=1
 ORDER BY C.NOME ;
-
+```
+```sql
 --respondida 6
 CREATE VIEW RESP06 (curso,disciplina)
 AS
 SELECT DISTINCT C.nome, D.nome FROM cursos C, disciplinas D, contem T
 WHERE D.numdisp = 1 AND T.iddisciplinas = 1 AND C.numcurso = T.idcurso
 ORDER BY C.nome;
-
+```
+```sql
 --respondida 7
 CREATE VIEW RESP07c(nome_aluno, codigo_aluno, semestre, nota, codigo_disciplina, nome_disciplina )
 AS
