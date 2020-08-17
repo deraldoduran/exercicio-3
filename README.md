@@ -155,3 +155,11 @@ SELECT DISTINCT P.nome,  T.semestre, T.disciplina, D.NOME FROM professores P, au
 WHERE T.professor = 1  AND P.numprof = T.professor AND T.DISCIPLINA = D.NUMDISP AND T.disciplina = 1
 ORDER BY D.NOME;
 ```
+```sql
+--respondida 11
+CREATE VIEW RESP11 (nome_professor, semestre, código_disciplia, nome_disciplina)
+AS
+SELECT DISTINCT P.nome,  T.semestre, T.disciplina, D.NOME FROM professores P, aula T, disciplinas D
+WHERE T.disciplina = 2 AND P.numprof = T.professor AND T.DISCIPLINA = D.NUMDISP
+ORDER BY D.NOME;
+```
