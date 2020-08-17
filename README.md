@@ -1,5 +1,5 @@
 # exercicio-3
-```aql
+```sql
 CREATE TABLE IF NOT EXISTS disciplinas(
 	numdisp serial not null,
 	nome varchar(90),
