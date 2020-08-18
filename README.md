@@ -199,3 +199,15 @@ SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_d
 WHERE D.numdisp = T.disciplina AND T.semestre = 19981 AND T.ALUNO = A.numaluno   AND T.professor = P.numprof
 GROUP BY A.nome, P.nome,D.nome,T.nota;
 ```
+```sql
+--respondida 16
+CREATE VIEW notas_profMarcosSalvador
+AS
+SELECT Distinct  P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas  FROM DISCIPLINAS D,aula T, alunos A, professores P
+WHERE D.numdisp = T.disciplina  AND T.professor = P.numprof AND T.professor = 2
+GROUP BY D.nome, P.nome, T.nota;
+
+CREATE VIEW RESP16
+AS
+SELECT AVG(NOTAS) fROM notas_profMarcosSalvador;
+```
