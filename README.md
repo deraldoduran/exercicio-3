@@ -225,3 +225,15 @@ AS
 SELECT DISTINCT N.notas, N.Nome_Aluno, N.Nome_disciplinas fROM notas_Alunos N
 WHERE (N.NOTAS) BETWEEN 5 AND 7 ;
 ```
+```sql
+--respondida 18
+CREATE VIEW notas_alunos
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas  FROM DISCIPLINAS D,aula T, alunos A, professores P
+WHERE D.numdisp = T.disciplina AND T.semestre = 19981 AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND T.DISCIPLINA =1
+GROUP BY A.nome, P.nome,D.nome,T.nota;
+
+CREATE VIEW RESP18
+AS
+SELECT AVG(NOTAS) FROM notas_alunos
+```
