@@ -106,6 +106,7 @@ INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 6, 2, 5, 1),(19982, 10, 4, 5, 1); 
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19981, 4, 1, 3, 2),(19981, 10, 2, 3, 2),(19981,3,3,3,2);
 INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 1, 1, 4, 3),(19982, 8, 2, 4, 3),(19982, 3, 4, 3, 3) ;
+INSERT INTO aula(semestre, nota, aluno, professor, disciplina) VALUES (19991, 10, 3, 2, 4), (19991, 7, 2, 2, 4), (19991, 5, 4, 2, 4);
 ```
 ```sql
 --respondido 5
