@@ -193,6 +193,13 @@ GROUP BY A.nome, P.nome,D.nome;
 ```
 ```sql
 --respondida 15
+CREATE VIEW RESP15C
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas, CO.idcurso AS código_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.semestre = 19981 AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND CO.idcurso = 1
+GROUP BY A.nome, P.nome,D.nome,T.nota,CO.idcurso;
+
+--FEITA ERRADA
 CREATE VIEW RESP15
 AS
 SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas  FROM DISCIPLINAS D,aula T, alunos A, professores P
