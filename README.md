@@ -182,3 +182,11 @@ AS
 SELECT * FROM NOME_NOTA
 WHERE notas IN (SELECT MAX(notas) FROM nome_nota);
 ```
+```sql
+--respondida 14
+CREATE VIEW RESP14
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas  FROM DISCIPLINAS D,aula T, alunos A, professores P
+WHERE D.numdisp = T.disciplina AND T.semestre = 19981 AND T.ALUNO = A.numaluno   AND T.professor = P.numprof
+GROUP BY A.nome, P.nome,D.nome;
+```
