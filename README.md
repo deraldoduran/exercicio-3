@@ -244,3 +244,11 @@ CREATE VIEW RESP18
 AS
 SELECT AVG(NOTAS) FROM notas_alunos
 ```
+```sql
+--respondida 19
+CREATE VIEW RESP19
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas, CO.idcurso AS código_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND P.NUMPROF = 5
+GROUP BY A.nome, P.nome,D.nome,T.nota,CO.idcurso;
+```
