@@ -211,3 +211,17 @@ CREATE VIEW RESP16
 AS
 SELECT AVG(NOTAS) fROM notas_profMarcosSalvador;
 ```
+```sql
+--respondida 17
+CREATE VIEW notas_Alunos
+AS
+SELECT Distinct  A.nome AS Nome_Aluno, D.nome AS Nome_disciplinas, T.nota AS notas  FROM DISCIPLINAS D,aula T, alunos A, professores P
+WHERE D.numdisp = T.disciplina  AND T.professor = P.numprof 
+GROUP BY D.nome, A.nome, T.nota
+ORDER BY D.nome;
+
+CREATE VIEW RESP17
+AS
+SELECT DISTINCT N.notas, N.Nome_Aluno, N.Nome_disciplinas fROM notas_Alunos N
+WHERE (N.NOTAS) BETWEEN 5 AND 7 ;
+```
