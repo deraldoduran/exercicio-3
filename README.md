@@ -264,4 +264,34 @@ CREATE VIEW RESP20
 AS
 SELECT AVG(notas) FROM notas_Edvaldo;
 ```
+```SQL
+--respondida 21
+CREATE VIEW CURSO_CIENCIACOMPUTAÇÃO
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas, CO.idcurso AS código_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND CU.numcurso  = 1
+GROUP BY A.nome, P.nome,D.nome,T.nota,CO.idcurso
+ORDER BY D.nome;
 
+CREATE VIEW CURSO_SISTEMAINFORMAÇÃO
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas, CO.idcurso AS código_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND CU.numcurso  = 2
+GROUP BY A.nome, P.nome,D.nome,T.nota,CO.idcurso
+ORDER BY D.nome;
+
+CREATE VIEW CURSO_MATEMATICA
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas, CO.idcurso AS código_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND CU.numcurso  = 3
+GROUP BY A.nome, P.nome,D.nome,T.nota,CO.idcurso
+ORDER BY D.nome;
+
+CREATE VIEW CURSO_HISTORIA
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, T.nota AS notas, CO.idcurso AS código_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND CU.numcurso  = 4
+GROUP BY A.nome, P.nome,D.nome,T.nota,CO.idcurso
+ORDER BY D.nome;
+
+```
