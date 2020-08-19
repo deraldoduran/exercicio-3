@@ -299,4 +299,12 @@ AS
 SELECT (SELECT AVG(SI.NOTAS)) AS MEDIA_SI, (SELECT AVG(CC.NOTAS)) AS MEDIA_CC,
 (SELECT AVG(M.NOTAS)) AS MEDIA_MAT, (SELECT AVG(HI.NOTAS))AS MEDIA_HIST
 FROM CURSO_SISTEMAINFORMAÇÃO SI, CURSO_CIENCIACOMPUTAÇÃO CC, CURSO_MATEMATICA M, CURSO_HISTORIA HI;
+
+--A CORRETA 21 É ESSA
+CREATE VIEW RESP21C
+AS
+SELECT Distinct A.nome AS nome_aluno, P.nome AS Nome_professor, D.nome AS Nome_disciplinas, (SELECT AVG(T.nota)) AS MEDIAS_DOS_ALUNOS, CU.nome AS nome_curso  FROM matricula MA,cursos CU,DISCIPLINAS D,aula T, alunos A, professores P, contem CO
+WHERE D.numdisp = T.disciplina AND T.ALUNO = A.numaluno   AND T.professor = P.numprof AND CO.idcurso = CU.numcurso AND CU.numcurso = MA.curso AND MA.aluno = A.numaluno  AND CU.numcurso  = 4
+GROUP BY A.nome, P.nome,D.nome,T.nota,CU.nome
+ORDER BY D.nome;
 ```
