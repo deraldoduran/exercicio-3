@@ -51,6 +51,12 @@ CREATE TABLE IF NOT EXISTS matricula(
 
 
 );
+
+--sugestão mudança
+CREATE TABLE IF NOT EXISTS matricula(
+	curso INT REFERENCES cursos(numcurso),
+	aluno INT REFERENCES alunos(numaluno)
+);
 ```
 ```sql
 CREATE TABLE aula(
@@ -66,6 +72,15 @@ CREATE TABLE aula(
 	CONSTRAINT professor_fkey FOREIGN KEY (professor) REFERENCES professores (numprof)
 
 );
+
+--sugestão mudança
+CREATE TABLE IF NOT EXISTS aula(
+	semestre VARCHAR(10),
+	nota NUMERIC(2,2),
+	aluno INT REFENCES alunos(numaluno),
+	professor INT REFERENCES professores(numprof),
+	disciplina INT REFERENCES disciplinas(numdisp)
+);
 ```
 ```sql
 CREATE TABLE contem(
@@ -79,6 +94,12 @@ CREATE TABLE contem(
 	CONSTRAINT curso_fkey FOREIGN KEY (idcurso) REFERENCES cursos(numcurso),
 	CONSTRAINT disciplina_fkey FOREIGN KEY (iddisciplinas) REFERENCES disciplinas(numdisp)
 
+);
+
+--sugestão mudança
+CREATE TABLE contem(
+	idcurso INT REFERENCES cursos(numcurso),
+	iddisciplina INT REFERENCES disciplinas(numdisp)
 );
 ```
 ```sql
