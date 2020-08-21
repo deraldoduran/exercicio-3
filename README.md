@@ -105,6 +105,10 @@ CREATE TABLE contem(
 ```sql
 INSERT INTO cursos(totalcreditos, nome) VALUES (80, 'Ciencia_computacao'), (80, 'Sistemas_informacao'), (70, 'Matematica'); 
 INSERT INTO cursos(totalcreditos, nome) VALUES (60, 'História');
+
+--sugestão mudança
+INSERT INTO cursos(totalcreditos, nome) VALUES (10, 'Ciencia_computacao'), (10, 'Sistemas_informacao'),
+(10, 'Matematica'), (10, 'História');
 ```
 ```sql
 INSERT INTO alunos(nome, endereço, cidade, telefone) VALUES ('Marcos João Casanova ', 'Rua da torre', 'Cascais', '9519-6262'), ('Ailton Castro','Rua da Amargura', 'Timbucutu', '9999-6666'), ('Edvaldo Carlos Silva', ' av. Joana Angélica', 'Salvador', '2345-4496'), ('Juvenal', 'av. da abolição', 'Redenção', '4444-2222');
@@ -122,12 +126,12 @@ INSERT INTO CONTEM(idcurso, iddisciplinas) VALUES (1,1),(1,2),(1,3),(2,1),(2,2),
 INSERT INTO matricula (curso, aluno) VALUES (1,1),(2,3),(3,2),(4,4);
 ```
 ```sql
-INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES (19981, 8, 1, 1, 1), (19981, 5, 2, 1, 1),(19981, 7, 3, 1, 1);
-INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 9, 2, 1, 5),(19982, 7, 4, 1, 5);
-INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 6, 2, 5, 1),(19982, 10, 4, 5, 1); 
-INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19981, 4, 1, 3, 2),(19981, 10, 2, 3, 2),(19981,3,3,3,2);
-INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  (19982, 1, 1, 4, 3),(19982, 8, 2, 4, 3),(19982, 3, 4, 3, 3) ;
-INSERT INTO aula(semestre, nota, aluno, professor, disciplina) VALUES (19991, 10, 3, 2, 4), (19991, 7, 2, 2, 4), (19991, 5, 4, 2, 4);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES ('19981', 8, 1, 1, 1), ('19981', 5, 2, 1, 1),('19981', 7, 3, 1, 1);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  ('19982', 9, 2, 1, 5),('19982', 7, 4, 1, 5);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  ('19982', 7, 2, 5, 1),('19982', 10, 4, 5, 1); 
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  ('19981', 8, 1, 3, 2),('19981', 10, 2, 3, 2),('19981',3,3,3,2);
+INSERT INTO aula( semestre, nota, aluno, professor, disciplina) VALUES  ('19982', 1, 1, 4, 3),('19982', 8, 2, 4, 3),('19982', 3, 4, 3, 3) ;
+INSERT INTO aula(semestre, nota, aluno, professor, disciplina) VALUES ('19991', 10, 3, 2, 4), ('19991', 7, 2, 2, 4), ('19991', 5, 4, 2, 4);
 ```
 ```sql
 --respondido 5
